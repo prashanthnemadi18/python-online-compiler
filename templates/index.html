@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Online Compiler</title>
     <meta name="description" content="Write and execute Python code online with our modern, feature-rich compiler">
-    
+
     <!-- Monaco Editor -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/editor/editor.main.min.css">
-    
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/editor/editor.main.min.css">
+
     <!-- Custom Styles -->
     <link rel="stylesheet" href="/static/css/style.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
+    <!-- Floating Particles Background -->
+    <div id="particles"></div>
+
     <div class="container">
         <!-- Header -->
         <header class="header">
             <div class="header-content">
                 <h1 class="logo">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 2L2 9L16 16L30 9L16 2Z" fill="url(#gradient1)"/>
-                        <path d="M2 23L16 30L30 23L16 16L2 23Z" fill="url(#gradient2)"/>
+                        <path d="M16 2L2 9L16 16L30 9L16 2Z" fill="url(#gradient1)" />
+                        <path d="M2 23L16 30L30 23L16 16L2 23Z" fill="url(#gradient2)" />
                         <defs>
                             <linearGradient id="gradient1" x1="2" y1="2" x2="30" y2="16" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#4A9EFF"/>
-                                <stop offset="1" stop-color="#7B68EE"/>
+                                <stop stop-color="#4A9EFF" />
+                                <stop offset="1" stop-color="#7B68EE" />
                             </linearGradient>
-                            <linearGradient id="gradient2" x1="2" y1="16" x2="30" y2="30" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#7B68EE"/>
-                                <stop offset="1" stop-color="#FF6B9D"/>
+                            <linearGradient id="gradient2" x1="2" y1="16" x2="30" y2="30"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#7B68EE" />
+                                <stop offset="1" stop-color="#FF6B9D" />
                             </linearGradient>
                         </defs>
                     </svg>
@@ -41,26 +48,29 @@
                 </h1>
                 <div class="header-actions">
                     <button id="themeToggle" class="icon-btn" title="Toggle theme">
-                        <svg class="theme-icon sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="5"/>
-                            <line x1="12" y1="1" x2="12" y2="3"/>
-                            <line x1="12" y1="21" x2="12" y2="23"/>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                            <line x1="1" y1="12" x2="3" y2="12"/>
-                            <line x1="21" y1="12" x2="23" y2="12"/>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        <svg class="theme-icon sun" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                         </svg>
-                        <svg class="theme-icon moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        <svg class="theme-icon moon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                         </svg>
                     </button>
                     <button id="downloadBtn" class="icon-btn" title="Download code">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
                         </svg>
                     </button>
                 </div>
@@ -95,14 +105,16 @@
                     <div class="section-header">
                         <h2>Input (stdin)</h2>
                     </div>
-                    <textarea id="stdin" class="input-box" placeholder="Enter input here (if your code uses input())"></textarea>
+                    <textarea id="stdin" class="input-box"
+                        placeholder="Enter input here (if your code uses input())"></textarea>
                 </div>
 
                 <!-- Controls -->
                 <div class="controls">
                     <button id="runBtn" class="run-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3" />
                         </svg>
                         Run Code
                     </button>
@@ -123,8 +135,9 @@
 
     <!-- Monaco Editor Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
-    
+
     <!-- Custom Scripts -->
     <script src="/static/js/main.js"></script>
 </body>
+
 </html>
